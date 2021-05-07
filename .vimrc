@@ -112,7 +112,18 @@ nmap tni I[ ] <ESC> A
 nmap td F[<ESC><Right>rx<ESC>$
 nmap tu F[<ESC><Right>r <ESC>$
 
+nmap <leader>n1 :e ~/notes/log<CR>
+nmap <leader>n0 :e ~/.vimrc<CR>
+
+" autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufWinEnter * silent :let b:localpwd=system('git rev-parse --show-toplevel 2>/dev/null || pwd')
+" autocmd BufWinEnter * silent :exe "lcd " . b:localpwd
+
 nmap <leader>r :CocCommand cSpell.toggleEnableSpellChecker<CR>
+
+" copy current file path
+nmap cp :let @+=expand("%:p") . ':' . line(".") . "\n" <CR>
+nmap gf gF
 
 " save
 nmap zs :w<CR>
@@ -264,6 +275,9 @@ function! s:find_git_root()
 endfunction
 
 command! ProjectFiles execute 'Files' s:find_git_root()
+
+" create dirpath when editing new file
+au BufNewFile * :exe ': !mkdir -p ' . escape(fnamemodify(bufname('%'),':p:h'),'#% \\')
 
 :nmap <leader>p :Files<CR>
 :nmap <leader>P :ProjectFiles<CR>

@@ -156,6 +156,8 @@ alias brc="vim ~/.bashrc"
 alias sc="cat ~/dev/configuration/semantic-commits-messages"
 alias lint="yarn build && yarn lint && yarn lint:css && yarn test:ci"
 alias lintcss="sudo yarn build && yarn lint && yarn lint:css && yarn test:ci && npx prettier -c src"
+## ALIAS - Chrome
+alias google="google-chrome"
 
 
 ## VI - Set VI mode to terminal

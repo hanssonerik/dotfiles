@@ -190,12 +190,12 @@ if ! tmux has-session -t $TMUX_SESSION 2> /dev/null; then
      tmux -2 new-session -d -A -s $TMUX_SESSION
      tmux rename-window 'Develop'
      # Upper left
-     tmux send-keys "cd ~/dev/stampen/mina-sidor-frontend && clear" C-m
+     tmux send-keys "cd ~/dev/stampen/react_frontend && vim" C-m
      # tmux send-keys -R "echo a" C-m
 
      #  Upper right
-     tmux split-window -h
-     tmux send-keys "cd ~/dev/stampen/mina-sidor-frontend && clear" C-m
+     tmux split-window -v
+     tmux send-keys "cd ~/dev/stampen/react_frontend && clear" C-m
      # tmux send-keys -R "echo b" C-m
  
      # Set default pane

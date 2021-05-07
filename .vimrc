@@ -241,6 +241,9 @@ nmap <leader>rn <Plug>(coc-rename)
 " xmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
 
+" clear hl on esc
+nnoremap <esc> :noh<return><esc>
+
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).

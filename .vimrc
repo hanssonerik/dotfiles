@@ -103,6 +103,8 @@ set statusline+=\ %p%%
 set statusline+=\ %y
 set statusline+=\ %l:%c
 set statusline+=\ 
+" File paths with space is ok
+set isfname+=32
 
 " insert task
 nmap tno o[ ] 

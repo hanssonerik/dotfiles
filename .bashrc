@@ -135,6 +135,7 @@ append_to_path /home/erihan/.fzf/bin
 
 ## ALIAS - Git
 alias glp="git log --pretty=oneline"
+alias gb="git branch --sort=-committerdate"
 alias gd="git diff HEAD -- "
 alias gdm="git diff origin/master..HEAD"
 alias grem="git reset HEAD -- "

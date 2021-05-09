@@ -130,25 +130,27 @@ nmap zs :w<CR>
 set nocompatible              " be improved, required
 filetype off                  " required
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
+call plug#begin('~/.config/nvim/plugged')
 " For toggle between tmux panes without C-b
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'morhetz/gruvbox'
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-Plugin 'neoclide/jsonc.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'zivyangll/git-blame.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/jsonc.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'zivyangll/git-blame.vim'
 
 " For file search with FZF
 set rtp+=~/.fzf
-Plugin 'junegunn/fzf.vim'
-call vundle#end()
-
-filetype plugin indent on
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+call plug#end()
 
 " CoC Default configuration
 " ------------------------------------
@@ -291,7 +293,7 @@ nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 :nnoremap <Leader>x :q<CR>
 
 
-:autocmd BufRead,BufNewFile ~/dev/stampen/mina-sidor-backend/* setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
-:autocmd BufRead,BufNewFile ~/dev/stampen/mina-sidor-frontend/* setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
+":autocmd BufRead,BufNewFile ~/dev/stampen/mina-sidor-backend/* setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
+":autocmd BufRead,BufNewFile ~/dev/stampen/mina-sidor-frontend/* setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 
-autocmd BufRead,BufNewFile *.json set filetype=jsonc
+"autocmd BufRead,BufNewFile *.json set filetype=jsonc

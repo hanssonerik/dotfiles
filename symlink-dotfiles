@@ -1,0 +1,4 @@
+
+# This will symlink the dotfiles to ~/
+
+ln -s -f ~/dev/dotfiles/.vimrc ~/.vimrc
